@@ -1,10 +1,9 @@
-defmodule Newapp.Post do
+defmodule Newapp.Comment do
   use Newapp.Web, :model
 
-  schema "posts" do
-    field :title, :string
+  schema "comments" do
     field :body, :string
-    has_many :comments, Newapp.Comment
+    belongs_to :post, Newapp.Post, foreign_key: :post_id
 
     timestamps()
   end
@@ -14,7 +13,7 @@ defmodule Newapp.Post do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :body])
-    |> validate_required([:title, :body])
+    |> cast(params, [:body])
+    |> validate_required([:body])
   end
 end

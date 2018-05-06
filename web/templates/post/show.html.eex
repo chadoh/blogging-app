@@ -14,5 +14,18 @@
 
 </ul>
 
+  <%= render Newapp.CommentView, "new.html",
+    conn: @conn,
+    post: @post,
+    comment_changeset: @comment_changeset %>
+
+  <ul>
+    <%= for comment <- @post.comments do %>
+      <li>
+        <%= comment.body %>
+      </li>
+      <% end %>
+  </ul>
+
 <span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
 <span><%= link "Back", to: post_path(@conn, :index) %></span>
