@@ -1,4 +1,4 @@
-# Newapp
+# My Blog
 
 To start your Phoenix app:
 
