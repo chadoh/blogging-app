@@ -1,31 +1,22 @@
-<h2>Show post</h2>
+<h2><%= @post.title %></h2>
 
-<ul>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
-
-  <li>
-    <strong>Body:</strong>
+  <p>
     <%= @post.body %>
-  </li>
+  </p>
 
-</ul>
 
   <%= render Newapp.CommentView, "new.html",
     conn: @conn,
     post: @post,
     comment_changeset: @comment_changeset %>
 
-  <ul>
     <%= for comment <- @post.comments do %>
-      <li>
+      <p>
         <%= comment.body %>
-      </li>
+      </p>
+      <hr />
       <% end %>
-  </ul>
 
-<span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: post_path(@conn, :index) %></span>
+<span><%= link "Edit", to: post_path(@conn, :edit, @post), class: "btn btn-default btn-xs" %></span>
+<span><%= link "Back", to: post_path(@conn, :index), class: "btn btn-default btn-xs" %></span>
