@@ -57,11 +57,7 @@ defmodule Newapp.PostController do
 
   def delete(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
-
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
     Repo.delete!(post)
-
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: post_path(conn, :index))

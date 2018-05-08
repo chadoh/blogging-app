@@ -28,6 +28,6 @@ defmodule Newapp.User do
       put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
       _ ->
       changeset
+    end
   end
-end
 end

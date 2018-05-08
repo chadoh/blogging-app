@@ -1,10 +1,4 @@
 <div class="jumbotron">
   <h1 class="display-4">Welcome to my Blog!</h1>
   <p class="lead">This is a simple blog that I am using to record my progress in programming. It is a work in progress and built using Elixir/Phoenix.</p>
-
-</div>
-
-<div class="row marketing">
-
-
 </div>

@@ -16,6 +16,7 @@ defmodule Newapp.SessionController do
         |> render("new.html")
     end
   end
+  
   def delete(conn, _) do conn
     |> Newapp.Auth.logout()
     |> redirect(to: page_path(conn, :index))
