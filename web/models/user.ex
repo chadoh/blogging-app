@@ -1,13 +1,14 @@
 defmodule Newapp.User do
   use Newapp.Web, :model
 
-    schema "users" do
-      field :name, :string
-      field :username, :string
-      field :password, :string, virtual: true
-      field :password_hash, :string
-      timestamps()
-    end
+  schema "users" do
+    field :name, :string
+    field :username, :string
+    field :password, :string, virtual: true
+    field :password_hash, :string
+    timestamps()
+  end
+
   def changeset(model, params \\ %{}) do
     model
     |> cast(params, ~w(name username), [])
@@ -24,10 +25,10 @@ defmodule Newapp.User do
 
   defp put_pass_hash(changeset) do
     case changeset do
-    %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-      put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
+      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
+        put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
       _ ->
-      changeset
+        changeset
     end
   end
 end

@@ -23,16 +23,18 @@ defmodule Newapp.Auth do
   def login_by_username_and_pass(conn, username, given_pass, opts) do
     repo = Keyword.fetch!(opts, :repo)
     user = repo.get_by(Newapp.User, username: username)
-      cond do
-        user && checkpw(given_pass, user.password_hash) ->
+    cond do
+      user && checkpw(given_pass, user.password_hash) ->
         {:ok, login(conn, user)}
-        user ->
+
+      user ->
         {:error, :unauthorized, conn}
-        true ->
-          dummy_checkpw()
-          {:error, :not_found, conn}
-      end
+
+      true ->
+        dummy_checkpw()
+        {:error, :not_found, conn}
     end
+  end
 
   def logout(conn) do
     configure_session(conn, drop: true)

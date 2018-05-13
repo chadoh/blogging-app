@@ -22,11 +22,11 @@ defmodule Newapp.UserController do
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
-      |> Newapp.Auth.login(user)
-      |> put_flash(:info, "#{user.name} created!")
-      |> redirect(to: user_path(conn, :index))
-    {:error, changeset} ->
-      render(conn, "new.html", changeset: changeset)
+        |> Newapp.Auth.login(user)
+        |> put_flash(:info, "#{user.name} created!")
+        |> redirect(to: user_path(conn, :index))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
     end
   end
 
